@@ -1,3 +1,5 @@
+# WARNING DRAFT VERSION
+
 ## 1. Σκοπός
 
 Το παρόν έγγραφο ορίζει τα **interfaces και τη συμπεριφορά των modules** που αποτελούν τον TinyMAC Accelerator.
