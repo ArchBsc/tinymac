@@ -1,42 +1,54 @@
-![](../../workflows/gds/badge.svg) ![](../../workflows/docs/badge.svg) ![](../../workflows/test/badge.svg) ![](../../workflows/fpga/badge.svg)
+# TinyMAC — Tiny AI Hardware Accelerator
 
-# Tiny Tapeout Verilog Project Template
+A digital ASIC project developed for [Tiny Tapeout](https://tinytapeout.com/).
 
-- [Read the documentation for project](docs/info.md)
+## Overview
 
-## What is Tiny Tapeout?
+TinyMAC is a **4-bit Multiply-Accumulate (MAC) Accelerator** designed in SystemVerilog.
 
-Tiny Tapeout is an educational project that aims to make it easier and cheaper than ever to get your digital and analog designs manufactured on a real chip.
+The circuit performs the following operation:
 
-To learn more and get started, visit https://tinytapeout.com.
+**ACC = ACC + (A × B)**
 
-## Set up your Verilog project
+It supports signed 4-bit operands, a 16-bit accumulator, bias loading, and basic control operations.
 
-1. Add your Verilog files to the `src` folder.
-2. Edit the [info.yaml](info.yaml) and update information about your project, paying special attention to the `source_files` and `top_module` properties. If you are upgrading an existing Tiny Tapeout project, check out our [online info.yaml migration tool](https://tinytapeout.github.io/tt-yaml-upgrade-tool/).
-3. Edit [docs/info.md](docs/info.md) and add a description of your project.
-4. Adapt the testbench to your design. See [test/README.md](test/README.md) for more information.
+The goal is to design, simulate, verify, and implement a functional MAC accelerator in silicon.
 
-The GitHub action will automatically build the ASIC files using [LibreLane](https://www.zerotoasiccourse.com/terminology/librelane/).
+## Project Structure
 
-## Enable GitHub actions to build the results page
+The design consists of three main modules:
 
-- [Enabling GitHub Pages](https://tinytapeout.com/faq/#my-github-action-is-failing-on-the-pages-part)
+- **`mac_datapath.sv`** — Performs multiplication, accumulation, and bias loading.
+- **`mac_controller.sv`** — Controls operations using a Finite State Machine (FSM).
+- **`mac_core.sv`** — Integrates the controller and datapath.
+
+Additional files:
+
+- **`project.v`** — Connects the MAC core to the Tiny Tapeout interface.
+- **`test/`** — Contains testbenches and verification scripts.
+- **`info.yaml`** — Defines the Tiny Tapeout project configuration.
+- **`docs/info.md`** — Contains the project documentation.
+
+## Development & Verification
+
+Each module is developed and tested independently before integration.
+
+Verification includes:
+- Functional simulation using SystemVerilog and cocotb.
+- Arithmetic and FSM tests.
+- Full system integration tests.
+- ASIC synthesis and physical design using LibreLane.
+
+## Future Development
+
+After completing the MAC accelerator, we aim to explore a **2×2 Mini TPU**, using multiple MAC units to perform parallel matrix multiplication.
 
 ## Resources
 
-- [FAQ](https://tinytapeout.com/faq/)
-- [Digital design lessons](https://tinytapeout.com/digital_design/)
-- [Learn how semiconductors work](https://tinytapeout.com/siliwiz/)
-- [Join the community](https://tinytapeout.com/discord)
-- [Build your design locally](https://www.tinytapeout.com/guides/local-hardening/)
+- [Project Documentation](https://github.com/ArchBsc/tinymac/blob/main/docs/info.md)
+- [Tiny Tapeout](https://tinytapeout.com/)
+- [Tiny Tapeout Verilog Template](https://github.com/TinyTapeout/ttsky-verilog-template)
 
-## What next?
+---
 
-- [Submit your design to the next shuttle](https://app.tinytapeout.com/).
-- Edit [this README](README.md) and explain your design, how it works, and how to test it.
-- Share your project on your social network of choice:
-  - LinkedIn [#tinytapeout](https://www.linkedin.com/search/results/content/?keywords=%23tinytapeout) [@TinyTapeout](https://www.linkedin.com/company/100708654/)
-  - Mastodon [#tinytapeout](https://chaos.social/tags/tinytapeout) [@matthewvenn](https://chaos.social/@matthewvenn)
-  - X (formerly Twitter) [#tinytapeout](https://twitter.com/hashtag/tinytapeout) [@tinytapeout](https://twitter.com/tinytapeout)
-  - Bluesky [@tinytapeout.com](https://bsky.app/profile/tinytapeout.com)
+**Status:** In Development
