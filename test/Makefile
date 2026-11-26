@@ -6,7 +6,10 @@ SIM ?= icarus
 FST ?= -fst # Use more efficient FST format
 TOPLEVEL_LANG ?= verilog
 SRC_DIR = $(PWD)/../src
-PROJECT_SOURCES = project.v
+PROJECT_SOURCES = project.v \
+                  mac_core.sv \
+                  mac_controller.sv \
+                  mac_datapath.sv
 
 ifneq ($(GATES),yes)
 
