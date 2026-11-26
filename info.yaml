@@ -48,7 +48,6 @@ pinout:
   uio[6]: "w[2] / bias[6]"
   uio[7]: "w[3] / bias[7]"
 
-yaml_version: 6
 
 # Do not change!
 yaml_version: 6
