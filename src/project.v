@@ -14,23 +14,12 @@ module tt_um_archbsc_tinymac (
   wire [1:0] opcode;
   wire [1:0] read_sel;
   wire strobe;
-
+  
   wire signed [3:0] x;
   wire signed [3:0] w;
   wire signed [7:0] bias;
-
+  
   wire signed [15:0] acc;
-
-  wire [1:0] opcode;
-  wire [1:0] read_sel;
-  wire strobe;
-
-  wire signed [3:0] x;
-  wire signed [3:0] w;
-  wire signed [7:0] bias;
-
-  wire signed [15:0] acc;
-
 
   mac_core u_mac_core (
     .clk    (clk),
