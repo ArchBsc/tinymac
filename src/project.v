@@ -21,6 +21,14 @@ module tt_um_archbsc_tinymac (
   
   wire signed [15:0] acc;
 
+  assign opcode   = ui_in[7:6];
+  assign read_sel = ui_in[2:1];
+  assign strobe   = ui_in[0];
+
+  assign x    = uio_in[3:0];
+  assign w    = uio_in[7:4];
+  assign bias = uio_in[7:0];
+
   mac_core u_mac_core (
     .clk    (clk),
     .rst_n  (rst_n),
