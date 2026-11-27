@@ -18,7 +18,7 @@ async def reset(dut):
 @cocotb.test()
 async def test_reset(dut):
 
-    Clock(dut.clk, 10, unit="ns").start()
+    Clock(dut.clk, 1000, unit="ns").start()
 
     await reset(dut)
     assert await read_acc(dut) == 0
@@ -45,12 +45,12 @@ async def read_acc(dut):
 
     # Lower byte
     dut.ui_in.value = 0b00000000
-    await Timer(1, unit="ns")
+    await Timer(100, unit="ns")
     lower = int(dut.uo_out.value)
 
     # Upper byte
     dut.ui_in.value = 0b00000010
-    await Timer(1, unit="ns")
+    await Timer(100, unit="ns")
     upper = int(dut.uo_out.value)
 
     # Combine bytes
@@ -81,7 +81,7 @@ async def mac(dut, x, w):
 @cocotb.test()
 async def test_basic_operations(dut):
 
-    Clock(dut.clk, 10, unit="ns").start()
+    Clock(dut.clk, 1000, unit="ns").start()
 
     await reset(dut)
     assert await read_acc(dut) == 0
@@ -98,7 +98,7 @@ async def test_basic_operations(dut):
 @cocotb.test()
 async def test_negative_operations(dut):
 
-    Clock(dut.clk, 10, unit="ns").start()
+    Clock(dut.clk, 1000, unit="ns").start()
 
     await reset(dut)
 
@@ -114,7 +114,7 @@ async def test_negative_operations(dut):
 @cocotb.test()
 async def test_idle(dut):
 
-    Clock(dut.clk, 10, unit="ns").start()
+    Clock(dut.clk, 1000, unit="ns").start()
 
     await reset(dut)
     await load_bias(dut, 20)
@@ -137,7 +137,7 @@ async def test_idle(dut):
 @cocotb.test()
 async def test_strobe_hold(dut):
 
-    Clock(dut.clk, 10, unit="ns").start()
+    Clock(dut.clk, 1000, unit="ns").start()
 
     await reset(dut)
     await load_bias(dut, 20)
@@ -149,6 +149,7 @@ async def test_strobe_hold(dut):
 
     for _ in range(5):
         await RisingEdge(dut.clk)
+        await Timer(100, unit="ns")
         await ReadOnly()
 
         assert int(dut.uo_out.value) == 26
@@ -165,7 +166,7 @@ async def test_strobe_hold(dut):
 @cocotb.test()
 async def test_reset_during_operation(dut):
 
-    Clock(dut.clk, 10, unit="ns").start()
+    Clock(dut.clk, 1000, unit="ns").start()
 
     await reset(dut)
 
@@ -185,8 +186,7 @@ async def test_reset_during_operation(dut):
 @cocotb.test()
 async def test_positive_saturation(dut):
 
-    Clock(dut.clk, 10, unit="ns").start()
-
+    Clock(dut.clk, 1000, unit="ns").start()
     await reset(dut)
 
     for _ in range(511):
@@ -205,7 +205,7 @@ async def test_positive_saturation(dut):
 @cocotb.test()
 async def test_negative_saturation(dut):
 
-    Clock(dut.clk, 10, unit="ns").start()
+    Clock(dut.clk, 1000, unit="ns").start()
 
     await reset(dut)
 
@@ -230,7 +230,7 @@ async def test_negative_saturation(dut):
 @cocotb.test()
 async def test_pin_mapping(dut):
 
-    Clock(dut.clk, 10, unit="ns").start()
+    Clock(dut.clk, 1000, unit="ns").start()
 
     await reset(dut)
     await load_bias(dut, -2)
@@ -239,22 +239,22 @@ async def test_pin_mapping(dut):
 
     # Lower byte
     dut.ui_in.value = 0b00000000
-    await Timer(1, unit="ns")
+    await Timer(100, unit="ns")
     assert int(dut.uo_out.value) == 254
 
     # Upper byte
     dut.ui_in.value = 0b00000010
-    await Timer(1, unit="ns")
+    await Timer(100, unit="ns")
     assert int(dut.uo_out.value) == 255
 
     # read_sel = 10
     dut.ui_in.value = 0b00000100
-    await Timer(1, unit="ns")
+    await Timer(100, unit="ns")
     assert int(dut.uo_out.value) == 0
 
     # read_sel = 11
     dut.ui_in.value = 0b00000110
-    await Timer(1, unit="ns")
+    await Timer(100, unit="ns")
     assert int(dut.uo_out.value) == 0
 
     # Bidirectional pins
