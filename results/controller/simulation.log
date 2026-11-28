@@ -1,0 +1,13 @@
+VCD info: dumpfile tb_controller.vcd opened for output.
+PASS Test 1: Reset active
+PASS Test 2: IDLE
+PASS Test 3a: LOAD_BIAS cycle 1
+PASS Test 3b: LOAD_BIAS WAIT_RELEASE (cycle 2)
+PASS Test 3c: LOAD_BIAS WAIT_RELEASE (cycle 3)
+PASS Test 4a: MAC cycle 1
+PASS Test 4b: MAC WAIT_RELEASE
+PASS Test 5: RESERVED
+PASS Test 6a: Async reset outputs are 0
+PASS Test 6b: Returned to READY after async reset
+=== Telos Simulation ===
+tb_controller.sv:153: $finish called at 115000 (1ps)

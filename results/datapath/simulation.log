@@ -1,0 +1,15 @@
+VCD info: dumpfile tb_datapath.vcd opened for output.
+[PASS] 1. Async Reset | acc = 0
+[PASS] 2. LOAD_BIAS (+25) | acc = 25
+[PASS] 3. LOAD_BIAS (-10, sign extension) | acc = -10
+[PASS] 4. MAC (+3 * +4) | acc = 2
+[PASS] 5. MAC (+5 * -3) | acc = -13
+[PASS] 6. MAC (-8 * -8) | acc = 51
+[PASS] 7. Hold (acc_we = 0) | acc = 51
+[PASS] 8a. Invalid ctrl (0,0) | acc = 51
+[PASS] 8b. Invalid ctrl (1,1) | acc = 51
+[PASS] 9. Mid-run Async Reset | acc = 0
+[PASS] 10. Positive Saturation (+32767) | acc = 32767
+[PASS] 11. Negative Saturation (-32768) | acc = -32768
+=== ΟΛΟΙ ΟΙ ΕΛΕΓΧΟΙ ΕΠΙΤΥΧΕΙΣ (0 errors) ===
+tb_datapath.sv:154: $finish called at 11185000 (1ps)

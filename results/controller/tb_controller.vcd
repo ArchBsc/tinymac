@@ -1,0 +1,152 @@
+$date
+	Fri Nov 27 01:47:31 2026
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1ps
+$end
+$scope module tb_controller $end
+$var wire 1 ! mac_en $end
+$var wire 1 " load_bias $end
+$var wire 1 # acc_we $end
+$var reg 1 $ clk $end
+$var reg 2 % opcode [1:0] $end
+$var reg 1 & rst_n $end
+$var reg 1 ' strobe $end
+$scope module dut $end
+$var wire 1 $ clk $end
+$var wire 2 ( opcode [1:0] $end
+$var wire 1 & rst_n $end
+$var wire 1 ' strobe $end
+$var parameter 2 ) OP_IDLE $end
+$var parameter 2 * OP_LOAD_BIAS $end
+$var parameter 2 + OP_MAC $end
+$var parameter 2 , OP_RESERVED $end
+$var reg 1 # acc_we $end
+$var reg 1 " load_bias $end
+$var reg 1 ! mac_en $end
+$var reg 1 - next_state $end
+$var reg 1 . state $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+$comment Show the parameter values. $end
+$dumpall
+b11 ,
+b10 +
+b1 *
+b0 )
+$end
+#0
+$dumpvars
+0.
+1-
+b10 (
+1'
+0&
+b10 %
+0$
+0#
+0"
+0!
+$end
+#5000
+1$
+#10000
+0-
+1&
+b0 %
+b0 (
+0'
+0$
+#15000
+1$
+#20000
+1-
+1'
+0$
+#25000
+1.
+1$
+#30000
+0-
+0'
+0$
+#35000
+0.
+1$
+#40000
+1-
+1"
+1#
+1'
+b1 %
+b1 (
+0$
+#45000
+0"
+0#
+1.
+1$
+#50000
+0$
+#55000
+1$
+#60000
+0-
+0'
+0$
+#65000
+0.
+1$
+#70000
+1-
+1!
+1#
+1'
+b10 %
+b10 (
+0$
+#75000
+0!
+0#
+1.
+1$
+#80000
+0-
+0'
+0$
+#85000
+0.
+1$
+#90000
+1-
+1'
+b11 %
+b11 (
+0$
+#95000
+1.
+1$
+#100000
+1-
+0.
+0&
+b10 %
+b10 (
+0$
+#101000
+1!
+1#
+1&
+#105000
+0!
+0#
+1.
+1$
+#110000
+0$
+#115000
+1$
